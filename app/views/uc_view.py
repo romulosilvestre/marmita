@@ -9,6 +9,14 @@ rota	descrição
 """
 from app import app
 from flask import render_template
+
+@app.route('/')
+def index():
+      return render_template("login/uc_login.html")
+
+
+
+
 @app.route("/listuc")
 def listar_uc():
     return render_template("uncompetencias/uc_template.html")
