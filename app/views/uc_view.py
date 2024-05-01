@@ -48,3 +48,12 @@ def number_uc(numero):
         case 11: return f"UC {numero} -Lógica de Programação"
         case 12: return f"UC {numero} -Informática Básica"
         case _:return f" Dados inexistente"
+
+@app.route("/login/<string:user>")
+@app.route("/login",defaults={'user':None},methods={'POST','GET'})
+def login_ps(user):
+    if user:
+       return render_template("login/uc_login.html",user=user)
+    else:
+        return "alô rota! visitante!"
+    
