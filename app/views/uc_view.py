@@ -57,3 +57,4 @@ def login_ps(user):
     else:
         return "alô rota! visitante!"
     
+#Criando o CRUD de Unidade de Competência
