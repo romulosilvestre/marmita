@@ -26,5 +26,6 @@ from .models import curso_model
 from .models import area_model
 from .views import area_view
 from .models import competencia_model
+from .models import logusuario_model
 
 
