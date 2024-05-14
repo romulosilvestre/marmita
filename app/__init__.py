@@ -19,13 +19,27 @@ csrf.init_app(app)
 babel = Babel(app)
 
 #determinar o que vai ter no projeto
+#FIXME:model
 from .models import uc_model
-from .views import uc_view
-from .views import curso_view
 from .models import curso_model
 from .models import area_model
-from .views import area_view
 from .models import competencia_model
 from .models import logusuario_model
+from .models import tipo_model
+from .models import especialidade_model
+from .models import medico_model
+
+#FIXME:view
+from .views import uc_view
+from .views import curso_view
+from .views import area_view
+from .views import tipo_view
+
+
+
+
+
+
+
 
 
