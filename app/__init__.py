@@ -34,6 +34,7 @@ from .views import uc_view
 from .views import curso_view
 from .views import area_view
 from .views import tipo_view
+from .views import especialidade_view
 
 
 
