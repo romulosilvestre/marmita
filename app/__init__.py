@@ -29,6 +29,16 @@ from .models import tipo_model
 from .models import especialidade_model
 from .models import medico_model
 
+#NOTE: Alpha InfoSystems
+#FIXME:model
+from .models.alpha import nivel_model
+from .models.alpha import tecnico_model
+
+#FIXME:view
+from .views import nivel_view
+
+
+
 #FIXME:view
 from .views import uc_view
 from .views import curso_view
