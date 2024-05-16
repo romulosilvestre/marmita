@@ -15,6 +15,8 @@
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
                 </tr>
             </thead>
             <tbody>
@@ -22,6 +24,8 @@
                     <tr>
                         <td>{{ nivel.id }}</td>
                         <td>{{ nivel.nome }}</td>
+                        <td><a href="#">alterar</a></td>
+                        <td><a href="#">excluir</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
