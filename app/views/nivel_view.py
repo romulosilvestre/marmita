@@ -1,5 +1,5 @@
 from app import app
-from flask import render_template #renderização
+from flask import render_template,redirect,url_for,request #renderização
 from app.forms import nivel_form
 from app.models.alpha import nivel_model
 from app import db
@@ -14,6 +14,15 @@ def cadastrar_nivel():
           db.session.add(nivel)
           #salvar a sessão
           db.session.commit()
+          if request.method == 'POST':
+           return redirect(url_for('listar_niveis'))
        except:
          print("nivel não cadastrado")
       return render_template("nivel/form_nivel.html",form=form)
+
+
+
+@app.route("/listaniveis")
+def listar_niveis():
+    niveis = nivel_model.Nivel.query.all()  # Consulta todos os registros na tabela Nivel
+    return render_template("nivel/lista_nivel.html", niveis=niveis)
