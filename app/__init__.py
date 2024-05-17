@@ -36,8 +36,7 @@ from .models.alpha import tecnico_model
 
 #FIXME:view
 from .views import nivel_view
-
-
+from .views import tecnico_view
 
 #FIXME:view
 from .views import uc_view

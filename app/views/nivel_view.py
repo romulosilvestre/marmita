@@ -1,6 +1,6 @@
 from app import app
 from flask import render_template,redirect,url_for,request #renderização
-from app.forms import nivel_form
+from app.forms.alpha import nivel_form
 from app.models.alpha import nivel_model
 from app import db
 @app.route("/cadnivel",methods=["POST","GET"])
