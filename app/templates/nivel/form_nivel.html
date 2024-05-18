@@ -1,43 +1,74 @@
-<!DOCTYPE html> <!--inicio do html-->
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!--inclusão de bootstrap usando  jinja2-->  
-    <link rel="stylesheet"  href="{{url_for('static',filename='css/bootstrap.css')}}">
-    <title>Cadastro do Curso</title>
+    <title>Cadastro de Níveis</title>
+    <!-- Inclusão do Bootstrap -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <style>
+        /* Adicionando estilo personalizado */
+        body {
+            padding-top: 60px; /* Ajuste para o menu fixo no topo */
+            padding-bottom: 60px; /* Ajuste para o rodapé fixo na parte inferior */
+        }
+    </style>
 </head>
 <body>
-    <header class="bg-dark text-white text-center py-4 mb-5">
+    <!-- Menu superior -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <h1 class="display-4">Alpha InfoSystem</h1>
-            <h6>Cadastro de Niveis</h6>
+            <a class="navbar-brand" href="#">Alpha InfoSystem</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Cadastro de Níveis</a>
+                    </li>
+                    <!-- Adicione mais itens de menu conforme necessário -->
+                </ul>
+            </div>
         </div>
-    </header>
-    
-   <form method="post"> <!--Metodo Post é para enviar-->
-       <!--template tag-->
-       <!-- jinja2 é um template engine-->
-       {{form.csrf_token}} <!--tipo hidden (escondido) - inspecione para visualizar-->
-       <div class="form-group"> <!--Bootstrap-->
-          <label>nome</label>
-          {{form.nome(class="form-control")}} <!--form-control-->
-          {% if form.errors.nome %}
-             <div class="alert alert-danger">
-                {{form.errors.nome}}
-             </div>           
-          {% endif %}
+    </nav>
 
-       </div>
-       <button class="btn btn-primary" type="submit">cadastrar</button>
-   </form> 
-   
-   {% if request.method == 'POST' %}
-   <script>
-       // Limpa o campo de texto após o envio do formulário
-       document.getElementById("{{ form.nome.id }}").value = "";
-   </script>
-   {% endif %}
+    <!-- Conteúdo principal -->
+    <div class="container">
+        <header class="text-center py-4">
+            <h1 class="display-4">Cadastro de Níveis</h1>
+        </header>
+
+        <form method="post">
+            {{ form.csrf_token }}
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                {{ form.nome(class="form-control", id="nome") }}
+                {% if form.errors.nome %}
+                    <div class="alert alert-danger">{{ form.errors.nome }}</div>
+                {% endif %}
+            </div>
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+
+    <!-- Rodapé -->
+    <footer class="footer fixed-bottom bg-dark text-white text-center py-3">
+        <div class="container">
+            &copy; 2024 Alpha InfoSystem. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- Scripts do Bootstrap (necessário para funcionalidades como dropdowns, etc.) -->
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+
+    {% if request.method == 'POST' %}
+        <script>
+            // Limpa o campo de texto após o envio do formulário
+            document.getElementById("nome").value = "";
+        </script>
+    {% endif %}
 </body>
 </html>
