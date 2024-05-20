@@ -7,5 +7,4 @@ class Tecnico(db.Model):
     id = db.Column(db.Integer,primary_key=True,autoincrement=True)
     nome  = db.Column(db.String(200))
     email  = db.Column(db.String(200))
-    mini_bio = db.Column(Text, nullable=False)
     fk_nivel_id= db.Column(db.Integer,db.ForeignKey('nivel.id'))

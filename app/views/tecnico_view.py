@@ -18,7 +18,8 @@ def cadastrar_tecnico_ok():
     if form.validate_on_submit():
         nome = form.nome.data
         nivel_id = form.nivel_id.data
-        tecnico = tecnico_model.Tecnico(nome=nome, nivel_id=nivel_id)
+        email = form.email.data
+        tecnico = tecnico_model.Tecnico(nome=nome,email=email,fk_nivel_id=nivel_id)
         try:
             db.session.add(tecnico)
             db.session.commit()
@@ -27,4 +28,11 @@ def cadastrar_tecnico_ok():
             print(f"Erro ao cadastrar técnico:{e}")
           
     return render_template("tecnico/form_tecnico.html", form=form)
+
+@app.route("/listartecnicos", methods=["POST", "GET"])
+def listar_tecnicos():
+    tecnicos = tecnico_model.Tecnico.query.all()  # Consulta todos os registros na tabela Nivel
+    return render_template("tecnico/lista_tecnico.html", tecnicos=tecnicos)
+    
+    
 
