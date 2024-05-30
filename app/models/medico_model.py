@@ -5,3 +5,5 @@ class Medico(db.Model):
     nome = db.Column(db.String(200))
     fk_especialidade_id= db.Column(db.Integer,db.ForeignKey('especialidade.id'))
   
+
+  

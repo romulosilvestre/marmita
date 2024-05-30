@@ -8,10 +8,10 @@ def cadastrar_especialidade():
       form = especialidade_form.EspecialidadeForm()
       if form.validate_on_submit():
        nome = form.nome.data #capturando o conteúdo validado
-       tipo = especialidade_model.Especialidade(nome=nome)
+       especialidade = especialidade_model.Especialidade(nome=nome)
        try:
           #adicionar na sessão de conexão com o banco de dados
-          db.session.add(tipo)
+          db.session.add(especialidade)
         #salvar
           db.session.commit()
        except:

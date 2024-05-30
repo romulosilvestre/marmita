@@ -1,6 +1,7 @@
 from app import db #SQLAlchemy - Migrate:Migrar Classe para Tabela
 from sqlalchemy import Text
 
+#Holdai(MeuPai)
 class Tecnico(db.Model):
     __tablename__ = "tecnico"
     #id = db.Column(tipo,chave,auto)

@@ -39,11 +39,15 @@ from .views import nivel_view
 from .views import tecnico_view
 
 #FIXME:view
-from .views import uc_view
+
 from .views import curso_view
 from .views import area_view
 from .views import tipo_view
 from .views import especialidade_view
+
+#NOTE: StarClinic
+from .views import home_view
+from .models import recepcionista_model
 
 
 

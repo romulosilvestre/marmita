@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +12,7 @@
         body {
             padding-top: 60px; /* Ajuste para o menu fixo no topo */
             padding-bottom: 60px; /* Ajuste para o rodapé fixo na parte inferior */
+            background-color: black;
         }
     </style>
 </head>
@@ -45,10 +46,7 @@
             {{ form.csrf_token }}
             <div class="form-group">
                 <label for="nome">Nome</label>
-                {{ form.nome(class="form-control", id="nome") }}
-                {% if form.errors.nome %}
-                    <div class="alert alert-danger">{{ form.errors.nome }}</div>
-                {% endif %}
+                {{ form.nome(class="form-control", id="nome") }}          
             </div>
             <button type="submit" class="btn btn-primary">Cadastrar</button>
         </form>

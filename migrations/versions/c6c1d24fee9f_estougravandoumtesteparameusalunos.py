@@ -1,8 +1,8 @@
-"""iniciando alpha infosystem
+"""EstouGravandoUmTesteParaMeusAlunos
 
-Revision ID: bdd4ac043f3b
+Revision ID: c6c1d24fee9f
 Revises: 
-Create Date: 2024-05-15 19:49:01.829193
+Create Date: 2024-05-29 20:38:01.605662
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'bdd4ac043f3b'
+revision = 'c6c1d24fee9f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -51,6 +51,15 @@ def upgrade():
     sa.Column('nome', sa.String(length=200), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('recepcionista',
+    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
+    sa.Column('nome', sa.String(length=80), nullable=True),
+    sa.Column('telefone', sa.String(length=40), nullable=True),
+    sa.Column('cpf', sa.String(length=80), nullable=True),
+    sa.Column('email', sa.String(length=80), nullable=True),
+    sa.Column('senha', sa.String(length=80), nullable=True),
+    sa.PrimaryKeyConstraint('id')
+    )
     op.create_table('tipo',
     sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('nome', sa.String(length=200), nullable=True),
@@ -88,6 +97,7 @@ def downgrade():
     op.drop_table('medico')
     op.drop_table('unidadecompetencia')
     op.drop_table('tipo')
+    op.drop_table('recepcionista')
     op.drop_table('nivel')
     op.drop_table('log_usuario')
     op.drop_table('especialidade')

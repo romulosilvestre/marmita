@@ -8,11 +8,20 @@ rota	descrição
 /meetuc	Encontrar uma unidade de competência
 """
 from app import app
-from flask import render_template
+from flask import render_template,request,redirect,url_for
+from app.forms  import recepcionista_form
+from app.models import recepcionista_model
 
-@app.route('/')
-def index():
-      return render_template("login/uc_login.html")
+@app.route('/recepcionista')
+def login():
+      form = recepcionista_form.RecepcionistaForm()
+      if form.validate_on_submit():
+       nome = form.nome.data
+       email = form.email.data #capturando o conteúdo validado
+       user = recepcionista_model.Recepcionista(nome=nome,email=email)
+       if request.method == 'POST':
+           return redirect(url_for('uncompetencias/uc_template.html"'))
+
 
 
 
