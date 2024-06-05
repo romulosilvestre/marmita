@@ -26,3 +26,8 @@ def cadastrar_nivel():
 def listar_niveis():
     niveis = nivel_model.Nivel.query.all()  # Consulta todos os registros na tabela Nivel
     return render_template("nivel/lista_nivel.html", niveis=niveis)
+
+@app.route("/listanivel/<int:id>")
+def listar_nivel(id):
+    nivel = nivel_model.Nivel.query.filter_by(id=id).first()  # Consulta todos os registros na tabela Nivel
+    return f"id:{nivel.id} nome:{nivel.nome}"
