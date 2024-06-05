@@ -19,12 +19,6 @@
        <div class="form-group col-3">
           <label>nome</label>
           {{form.nome(class="form-control")}}
-          {% if form.errors.nome %}
-             <div class="alert alert-danger">
-                {{form.errors.nome}}
-             </div>           
-          {% endif %}
-
        </div>
        <button class="btn btn-primary" type="sumit">cadastrar</button>
    </form> 

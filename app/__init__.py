@@ -26,8 +26,7 @@ from .models import area_model
 from .models import competencia_model
 from .models import logusuario_model
 from .models import tipo_model
-from .models import especialidade_model
-from .models import medico_model
+
 
 #NOTE: Alpha InfoSystems
 #FIXME:model
@@ -48,6 +47,10 @@ from .views import especialidade_view
 #NOTE: StarClinic
 from .views import home_view
 from .models import recepcionista_model
+from .models.starc import log
+from .models.starc import especialidade
+from .models.starc import medico
+
 
 
 
