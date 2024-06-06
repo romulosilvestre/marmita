@@ -1,72 +1,22 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Níveis</title>
-    <!-- Inclusão do Bootstrap -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
-    <style>
-        /* Adicionando estilo personalizado */
-        body {
-            padding-top: 60px; /* Ajuste para o menu fixo no topo */
-            padding-bottom: 60px; /* Ajuste para o rodapé fixo na parte inferior */
-            background-color: black;
-        }
-    </style>
-</head>
-<body>
-    <!-- Menu superior -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">Alpha InfoSystem</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Cadastro de Níveis</a>
-                    </li>
-                    <!-- Adicione mais itens de menu conforme necessário -->
-                </ul>
-            </div>
-        </div>
-    </nav>
+{% extends "nivel/base.html" %}
 
-    <!-- Conteúdo principal -->
-    <div class="container">
-        <header class="text-center py-4">
-            <h1 class="display-4">Cadastro de Níveis</h1>
-        </header>
+{% block conteudo %}
 
-        <form method="post">
-            {{ form.csrf_token }}
-            <div class="form-group">
-                <label for="nome">Nome</label>
-                {{ form.nome(class="form-control", id="nome") }}          
-            </div>
-            <button type="submit" class="btn btn-primary">Cadastrar</button>
-        </form>
+<form method="post">
+    {{ form.csrf_token }}
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        {{ form.nome(class="form-control", id="nome") }}          
     </div>
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
 
-    <!-- Rodapé -->
-    <footer class="footer fixed-bottom bg-dark text-white text-center py-3">
-        <div class="container">
-            &copy; 2024 Alpha InfoSystem. Todos os direitos reservados.
-        </div>
-    </footer>
+{% if request.method == 'POST' %}
+  <script>
+    // Limpa o campo de texto após o envio do formulário
+    document.getElementById("nome").value = "";
+  </script>
+{% endif %}
 
-    <!-- Scripts do Bootstrap (necessário para funcionalidades como dropdowns, etc.) -->
-    <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+{% endblock conteudo %}
 
-    {% if request.method == 'POST' %}
-        <script>
-            // Limpa o campo de texto após o envio do formulário
-            document.getElementById("nome").value = "";
-        </script>
-    {% endif %}
-</body>
-</html>

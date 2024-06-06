@@ -30,4 +30,4 @@ def listar_niveis():
 @app.route("/listanivel/<int:id>")
 def listar_nivel(id):
     nivel = nivel_model.Nivel.query.filter_by(id=id).first()  # Consulta todos os registros na tabela Nivel
-    return f"id:{nivel.id} nome:{nivel.nome}"
+    return render_template("nivel/lista_nivel_id.html",nivel=nivel)
