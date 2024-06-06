@@ -23,7 +23,7 @@
                 {% for nivel in niveis %}
                     <tr>
                         <td>{{ nivel.id }}</td>
-                        <td><a href="{{ url_for('listanivel',id=nivel.id) }}">{{ nivel.nome }}</a></td>
+                        <td><a href="{{url_for('listar_nivel',id=nivel.id)}}">{{ nivel.nome }}</a></td>
                         <td><a href="#">alterar</a></td>
                         <td><a href="#">excluir</a></td>
                     </tr>
