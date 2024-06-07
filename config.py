@@ -10,7 +10,7 @@ SERVER = 'localhost'
 #create database ....
 # SQLAlchemy
 
-DB = 'star'
+DB = 'projetobasefinal'
 #connection string
 SQLALCHEMY_DATABASE_URI=f'mysql://{USERNAME}:{PASSWORD}@{SERVER}/{DB}'
 #modificação

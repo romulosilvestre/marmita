@@ -3,7 +3,7 @@ from flask import render_template,redirect,url_for,request #renderização
 from app.forms.alpha import nivel_form
 from app.models.alpha import nivel_model
 from app import db
-@app.route("/cadnivel",methods=["POST","GET"])
+@app.route("/",methods=["POST","GET"])
 def cadastrar_nivel():
       form = nivel_form.NivelForm()
       if form.validate_on_submit():
@@ -18,7 +18,7 @@ def cadastrar_nivel():
            return redirect(url_for('listar_niveis'))
        except:
          print("nivel não cadastrado")
-      return render_template("nivel/form_nivel.html",form=form)
+      return render_template("nivel/form_nivel.html",form=form,editar=False)
 
 
 
@@ -48,4 +48,19 @@ def editar_nivel(id):
       except:
           print("o cliente não foi editado")
          
-   return render_template("nivel/form_nivel.html",form=form)
+   return render_template("nivel/form_nivel.html",form=form,editar=True)
+
+@app.route("/removernivel/<int:id>",methods=["POST","GET"])
+def remover_nivel(id):
+     nivel = nivel_model.Nivel.query.filter_by(id=id).first() 
+     # vamos indicar que o usuário clicou no botão remover
+     # importe request
+     if request.method == "POST":
+        try:
+             db.session.delete(nivel)
+             db.session.commit()
+             return redirect(url_for("listar_niveis"))
+        except:
+             print("erro ao deletar nível")
+     return render_template("nivel/remover_nivel.html",nivel=nivel)
+   

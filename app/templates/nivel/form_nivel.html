@@ -1,5 +1,6 @@
 {% extends "nivel/base.html" %}
 
+ 
 {% block conteudo %}
 
 <form method="post">
@@ -8,7 +9,7 @@
         <label for="nome">Nome</label>
         {{ form.nome(class="form-control", id="nome") }}          
     </div>
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    <button type="submit" class="btn btn-primary">{{ 'Editar' if editar else 'Cadastrar' }}</button>
 </form>
 
 {% if request.method == 'POST' %}

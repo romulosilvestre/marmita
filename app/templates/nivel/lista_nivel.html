@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Níveis</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-5">
-        <h1 class="mb-4">Lista de Níveis</h1>
+{% extends "nivel/base.html"  %}
+
+
+
+{% block conteudo %} 
+    
+    
+    <div class="container mt-5">       
         <table class="table table-bordered table-striped">
             <thead class="thead-dark">
                 <tr>
@@ -25,15 +21,12 @@
                         <td>{{ nivel.id }}</td>
                         <td><a href="{{url_for('listar_nivel',id=nivel.id)}}">{{ nivel.nome }}</a></td>
                         <td><a href="{{url_for('editar_nivel',id=nivel.id)}}">alterar</a></td>
-                        <td><a href="#">excluir</a></td>
+                        <td><a href="{{url_for('remover_nivel',id=nivel.id)}}">remover</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <a href="{{url_for('cadastrar_nivel')}}"> <button type="submit" class="btn btn-primary">Cadastrar</button></a>
+       
     </div>
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+{% endblock conteudo %} 
