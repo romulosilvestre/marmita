@@ -2,7 +2,11 @@ from flask import render_template, redirect, url_for
 from app import app, db
 from app.forms.alpha import tecnico_form
 from app.models.alpha import tecnico_model
+from app.models.alpha.tecnico_model import Tecnico
+from app.models.alpha.nivel_model import Nivel
 from app.models.alpha import nivel_model
+from sqlalchemy.orm import joinedload
+
 
 @app.route("/cadtecnico", methods=["POST", "GET"])
 def cadastrar_tecnico_ok():
@@ -31,8 +35,9 @@ def cadastrar_tecnico_ok():
 
 @app.route("/listartecnicos", methods=["POST", "GET"])
 def listar_tecnicos():
-    tecnicos = tecnico_model.Tecnico.query.all()  # Consulta todos os registros na tabela Nivel
-    return render_template("tecnico/lista_tecnico.html", tecnicos=tecnicos)
+    #tecnicos = tecnico_model.Tecnico.query.all()  # Consulta todos os registros na tabela Nivel
+    tecnicos_com_nivel = db.session.query(Tecnico).options(joinedload(Tecnico.nivel)).all()
+    return render_template("tecnico/lista_tecnico.html", tecnicos=tecnicos_com_nivel)
     
     
 

@@ -1,5 +1,6 @@
 from app import db #SQLAlchemy - Migrate:Migrar Classe para Tabela
 from sqlalchemy import Text
+from sqlalchemy.orm import relationship
 
 #Holdai(MeuPai)
 class Tecnico(db.Model):
@@ -9,3 +10,4 @@ class Tecnico(db.Model):
     nome  = db.Column(db.String(200))
     email  = db.Column(db.String(200))
     fk_nivel_id= db.Column(db.Integer,db.ForeignKey('nivel.id'))
+    nivel = relationship("Nivel",back_populates="tecnicos")
