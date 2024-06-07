@@ -31,3 +31,21 @@ def listar_niveis():
 def listar_nivel(id):
     nivel = nivel_model.Nivel.query.filter_by(id=id).first()  # Consulta todos os registros na tabela Nivel
     return render_template("nivel/lista_nivel_id.html",nivel=nivel)
+
+@app.route("/editarnivel/<int:id>",methods=["POST","GET"])
+def editar_nivel(id):
+   nivel = nivel_model.Nivel.query.filter_by(id=id).first() 
+   # vamos agora criar o nosso nível de formulário
+   form = nivel_form.NivelForm(obj=nivel)
+   # verificar se todos os dados estão ok
+   if form.validate_on_submit():
+      nome = form.nome.data
+      nivel.nome = nome
+
+      try:
+          db.session.commit()
+          return redirect(url_for("listar_niveis"))
+      except:
+          print("o cliente não foi editado")
+         
+   return render_template("nivel/form_nivel.html",form=form)
