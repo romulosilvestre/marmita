@@ -1,0 +1,51 @@
+{% extends "formapgto/base.html" %}
+
+{% block conteudo %}
+<h4>Cadastro de Marmita</h4>
+<form method="post" enctype="multipart/form-data">
+    {{ form.csrf_token }}
+    
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        {{ form.nome(class="form-control", id="nome") }}          
+    </div>
+    
+    <div class="form-group">
+        <label for="foto">Foto</label>
+        {{ form.foto(class="form-control-file", id="foto") }}
+    </div>
+    
+    <div class="form-group">
+        <label for="peso">Peso (kg)</label>
+        {{ form.peso(class="form-control", id="peso") }}
+    </div>
+    
+    <div class="form-group">
+        <label for="valor">Valor (R$)</label>
+        {{ form.valor(class="form-control", id="valor") }}
+    </div>
+    
+    <div class="form-group">
+    <label>Ingredientes</label>
+    <select id="itens" name="itens" class="form-control">
+        {% for id, descricao in form.itens.choices %}
+          <option value="{{ id }}">{{ descricao}}</option>
+        {% endfor %}
+      </select>                
+  </div>  
+    
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
+
+{% if request.method == 'POST' %}
+  <script>
+    // Limpa os campos de texto após o envio do formulário
+    document.getElementById("nome").value = "";
+    document.getElementById("peso").value = "";
+    document.getElementById("valor").value = "";
+    document.getElementById("foto").value = "";
+    document.getElementById("itens").selectedIndex = -1; // Limpar seleção de itens
+  </script>
+{% endif %}
+
+{% endblock conteudo %}

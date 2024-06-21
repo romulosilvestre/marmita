@@ -1,4 +1,4 @@
-{% extends "nivel/base.html"  %}
+{% extends "tipo/base.html"  %}
 
 
 
@@ -16,17 +16,17 @@
                 </tr>
             </thead>
             <tbody>
-                {% for nivel in niveis %}
+                {% for tipo in tipos %}
                     <tr>
-                        <td>{{ nivel.id }}</td>
-                        <td><a href="{{url_for('listar_nivel',id=nivel.id)}}">{{ nivel.nome }}</a></td>
-                        <td><a href="{{url_for('editar_nivel',id=nivel.id)}}">alterar</a></td>
-                        <td><a href="{{url_for('remover_nivel',id=nivel.id)}}">remover</a></td>
+                        <td>{{ tipo.id }}</td>
+                        <td><a href="{{url_for('listar_tipo',id=tipo.id)}}">{{ tipo.nome }}</a></td>
+                        <td><a href="{{url_for('editar_tipo',id=tipo.id)}}">alterar</a></td>
+                        <td><a href="{{url_for('remover_tipo',id=tipo.id)}}">remover</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a href="{{url_for('cadastrar_nivel')}}"> <button type="submit" class="btn btn-primary">Cadastrar</button></a>
+        <a href="{{url_for('cadastrar_tipo')}}"> <button type="submit" class="btn btn-primary">Cadastrar</button></a>
        
     </div>
 {% endblock conteudo %} 

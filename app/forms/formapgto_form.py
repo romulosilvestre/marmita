@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
 from wtforms.validators import DataRequired
-class NivelForm(FlaskForm):
+class FormaPgtoForm(FlaskForm):
      nome = StringField("nome",validators=[DataRequired()])

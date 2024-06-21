@@ -1,0 +1,22 @@
+{% extends "formapgto/base.html" %}
+
+ 
+{% block conteudo %}
+<h4>Cadastro do Pedido</h4>
+<form method="post">
+    {{ form.csrf_token }}
+    <div class="form-group">
+        <label for="data">Data</label>
+        {{ form.nome(class="form-control", id="nome") }}          
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar Pedido</button>
+</form>
+
+{% if request.method == 'POST' %}
+  <script>
+    // Limpa o campo de texto após o envio do formulário
+    document.getElementById("nome").value = "";
+  </script>
+{% endif %}
+
+{% endblock conteudo %}

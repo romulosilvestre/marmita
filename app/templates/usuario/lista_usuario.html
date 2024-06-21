@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Níveis</title>
+    <title>Lista de Tipo</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Lista de Técnicos</h1>
+        <h1 class="mb-4">Lista de Usuários</h1>
         <table class="table table-bordered table-striped">
             <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
                     <th>Nome</th>
                     <th>Email</th>
-                    <th>Nivel</th>
+                    <th>Tipo</th>
                     <th>Editar</th>
                     <th>Excluir</th>
                 </tr>
@@ -27,7 +27,7 @@
                         <td>{{ usuario.id }}</td>
                         <td>{{ usuario.nome }}</td>
                         <td>{{ usuario.email }}</td>
-                        <td>{{ usuario.nivel.nome}}</td>
+                        <td>{{ usuario.tipo.nome}}</td>
                         <td><a href="#">alterar</a></td>
                         <td><a href="#">excluir</a></td>
                     </tr>

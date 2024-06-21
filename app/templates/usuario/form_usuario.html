@@ -29,16 +29,30 @@
                 
             </div>
             <div class="form-group">
-                <label>Nível</label>
-                <select id="nivel_id" name="nivel_id" class="form-control">
-                    {% for id, nome in form.nivel_id.choices %}
-                        <option value="{{ id }}">{{ nome }}</option>
-                    {% endfor %}
-                </select>
+                <label for="{{ form.cpf.id }}">CPF</label>
+                {{ form.cpf(class="form-control") }}
                 
             </div>
-            
-    </select>
+            <div class="form-group">
+                <label for="{{ form.telefone.id }}">telefone</label>
+                {{ form.telefone(class="form-control") }}
+                
+            </div>
+            <div class="form-group">
+                <label for="{{ form.senha.id }}">senha</label>
+                {{ form.senha(class="form-control") }}
+                
+            </div>
+            <div class="form-group">
+                <label>Tipo</label>
+                <select id="tipo_id" name="tipo_id" class="form-control">
+                    {% for id, nome in form.tipo_id.choices %}
+                        <option value="{{ id }}">{{ nome }}</option>
+                    {% endfor %}
+                </select>                
+            </div>     
+  
+
            
             <button class="btn btn-primary" type="submit">Cadastrar</button>
         </form>

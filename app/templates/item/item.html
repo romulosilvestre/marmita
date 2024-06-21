@@ -1,0 +1,22 @@
+{% extends "formapgto/base.html" %}
+
+ 
+{% block conteudo %}
+<h6>Crie uma lista de itens (ingredientes) para suas marmitas:</h6>
+<form method="post">
+    {{ form.csrf_token }}
+    <div class="form-group">
+        <label for="descricao">Digite aqui:</label>
+        {{ form.descricao(class="form-control", id="descricao") }}          
+    </div>
+    <button type="submit" class="btn btn-primary">Cadastrar Itens</button>
+</form>
+
+{% if request.method == 'POST' %}
+  <script>
+    // Limpa o campo de texto após o envio do formulário
+    document.getElementById("descricao").value = "";
+  </script>
+{% endif %}
+
+{% endblock conteudo %}
